@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-serif: var(--font-quattrocento);
   --font-script: var(--font-pinyon-script);
+  --font-mono: var(--font-roboto-mono);
 }
 
 @media (prefers-color-scheme: dark) {

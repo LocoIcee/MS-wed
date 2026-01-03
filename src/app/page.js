@@ -14,25 +14,8 @@ export default function Home() {
             July 23, 2026 at 5:00pm
           </p>
         </div>
-        <nav className="mb-8 flex w-full max-w-3xl flex-wrap items-center justify-center gap-8 text-xs uppercase tracking-[0.35em] text-white/85 lg:text-xl">
-          <a className="transition hover:text-white" href="#rsvp">
-            RSVP
-          </a>
-          <a className="transition hover:text-white" href="#story">
-            Story
-          </a>
-          <div>
-          </div>
-          <a className="transition hover:text-white" href="#schedule">
-            Schedule
-          </a>
-          <a className="transition hover:text-white" href="#faq">
-            FAQ
-          </a>
-        </nav>
       </div>
     </div>
   );
 }
-
 
