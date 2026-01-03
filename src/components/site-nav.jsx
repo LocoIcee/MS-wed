@@ -3,10 +3,10 @@
 import { usePathname } from "next/navigation";
 
 const defaultLinks = [
-  { label: "RSVP", href: "#rsvp" },
+  { label: "RSVP", href: "/rsvp" },
   { label: "Story", href: "/story" },
-  { label: "Schedule", href: "#schedule" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Schedule", href: "/schedule" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 export default function SiteNav() {
