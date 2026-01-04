@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function StoryPage() {
   return (
     <div
@@ -14,10 +16,13 @@ export default function StoryPage() {
               Love
             </div>
             <div className="flex justify-center">
-              <img
+              <Image
                 src="/imgs/story.JPG"
                 alt="Stewart and Monique"
+                width={512}
+                height={640}
                 className="w-64 max-w-full shadow-[0_24px_60px_rgba(0,0,0,0.35)] lg:w-100"
+                sizes="(min-width: 1024px) 33vw, 60vw"
               />
             </div>
             <div className="text-center text-4xl uppercase tracking-[0.35em] text-[#e6d8cf] lg:block font-[family-name:var(--font-quattrocento)]">
@@ -29,7 +34,7 @@ export default function StoryPage() {
           <p>
             Stewart &amp; Monique met in 2020 and had no idea they would be so
             compatible. What started as a joke became a beautiful and strong
-            relationship. They are truly inseparable and can't do anything without
+            relationship. They are truly inseparable and can&apos;t do anything without
             each other. Now they are focusing on travelling the world with each
             other and their lives with their dog Tobi. Maybe another dog soon. There
             is so much love and passion for each other and they want to celebrate

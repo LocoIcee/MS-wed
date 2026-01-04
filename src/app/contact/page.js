@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ContactPage() {
   return (
     <div
@@ -35,10 +37,12 @@ export default function ContactPage() {
         </section>
 
         <div className="relative min-h-[360px] w-full lg:min-h-screen">
-          <img
+          <Image
             src="/imgs/contact.JPG"
             alt="Stewart and Monique walking together"
-            className="absolute inset-0 h-full w-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(min-width: 1024px) 50vw, 100vw"
           />
         </div>
       </div>

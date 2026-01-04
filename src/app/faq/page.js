@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function FaqPage() {
   return (
     <div
@@ -55,10 +57,13 @@ export default function FaqPage() {
         </section>
 
         <div className="flex justify-center lg:justify-end">
-          <img
+          <Image
             src="/imgs/faq.JPG"
             alt="Stewart and Monique on the train"
+            width={720}
+            height={960}
             className="w-full object-cover shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
+            sizes="(min-width: 1024px) 50vw, 100vw"
           />
         </div>
       </div>

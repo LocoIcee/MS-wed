@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function SchedulePage() {
   return (
     <div
@@ -9,10 +11,12 @@ export default function SchedulePage() {
     >
       <div className="mx-auto grid min-h-screen w-full max-w-6xl grid-cols-1 items-stretch gap-10 px-6 py-16 lg:max-w-none lg:grid-cols-2 lg:gap-0 lg:px-0 lg:py-0">
         <section className="relative flex min-h-[520px] flex-col justify-center overflow-hidden lg:min-h-screen">
-          <img
+          <Image
             src="/imgs/schedule.jpeg"
             alt="Reception setting"
-            className="absolute inset-0 h-full w-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(min-width: 1024px) 50vw, 100vw"
           />
           <div className="absolute inset-0 bg-[#4b4334]/70" aria-hidden="true" />
           <div className="relative z-10 px-10 py-12 lg:px-16">
