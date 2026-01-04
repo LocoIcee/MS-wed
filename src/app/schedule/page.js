@@ -34,13 +34,13 @@ export default function SchedulePage() {
         </section>
 
         <section className="flex flex-col justify-center gap-8 px-6 py-16 text-[#e6d8cf] lg:px-16 lg:py-0">
-          <h2 className="text-2xl uppercase tracking-[0.3em] sm:text-3xl">
+          <h2 className="text-2xl uppercase tracking-[0.3em] lg:text-3xl">
             Reception
           </h2>
 
           <div>
             <h3 className="text-lg uppercase tracking-[0.2em]">Reception Venue</h3>
-            <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 sm:text-base">
+            <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 lg:text-base font-[family-name:var(--font-roboto-mono)]">
               Our indoor reception will take place at L’Olivo Cicchetti &amp;
               Lounge. Please arrive no later than 6:00 pm for a seated dinner and
               speeches.
@@ -49,12 +49,12 @@ export default function SchedulePage() {
 
           <div>
             <h3 className="text-lg uppercase tracking-[0.2em]">Dress Code</h3>
-            <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 sm:text-base">
+            <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 lg:text-base font-[family-name:var(--font-roboto-mono)]">
               We invite our guests to dress in elevated cocktail attire for a
               summer evening celebration.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              {["#4c0b0b", "#9c5d5e", "#808064", "#3f3428", "#aa856b", "#4a2c06"].map(
+              {["#380203", "#955859", "#848261", "#352b1f", "#97795e", "#3d2500"].map(
                 (color) => (
                   <span
                     className="h-12 w-12 rounded-full"
@@ -70,7 +70,7 @@ export default function SchedulePage() {
             <h3 className="text-lg uppercase tracking-[0.2em]">
               Parking &amp; Directions
             </h3>
-            <p className="mt-3 text-sm uppercase tracking-[0.2em] text-[#e6d8cf]/80 sm:text-base">
+            <p className="mt-3 text-sm uppercase tracking-[0.2em] text-[#e6d8cf]/80 lg:text-base">
               TBA
             </p>
           </div>

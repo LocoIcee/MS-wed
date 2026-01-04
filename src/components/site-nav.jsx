@@ -7,6 +7,7 @@ const defaultLinks = [
   { label: "Story", href: "/story" },
   { label: "Schedule", href: "/schedule" },
   { label: "FAQ", href: "/faq" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export default function SiteNav() {

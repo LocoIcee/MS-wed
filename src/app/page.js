@@ -3,7 +3,7 @@ export default function Home() {
     <div className="relative min-h-screen w-full bg-[url('/imgs/home.JPG')] bg-cover bg-center text-white">
       <div className="absolute inset-0 bg-black/15" aria-hidden="true" />
       <div className="relative flex min-h-screen flex-col items-center px-6 text-center">
-        <div className="flex flex-1 flex-col items-center justify-center">
+        <div className="flex flex-1 flex-col -translate-y-[10vh] justify-center">
           <h1 className="font-[family-name:var(--font-pinyon-script)] text-5xl leading-tight tracking-wide drop-shadow-[0_6px_12px_rgba(0,0,0,0.45)] lg:text-9xl">
             Stewart & Monique
           </h1>

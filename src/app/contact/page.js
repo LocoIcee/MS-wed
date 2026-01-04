@@ -12,9 +12,9 @@ export default function ContactPage() {
               <h2 className="text-base uppercase tracking-[0.2em] text-[#c8a588] sm:text-lg">
                 The Bride&apos;s Information
               </h2>
-              <p className="mt-4">403-616-1966</p>
+              <p className="mt-4"><a href="tel:403-616-1966">403-616-1966</a></p>
               <p>monique.anderson@gmail.com</p>
-              <p>@monique.anderson</p>
+              <p>@moniquue.anderson</p>
             </div>
 
             <div>
