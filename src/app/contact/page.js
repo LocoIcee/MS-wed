@@ -11,11 +11,11 @@ export default function ContactPage() {
     >
       <div className="grid min-h-screen w-full grid-cols-1 lg:grid-cols-2">
         <section className="flex flex-col items-center justify-center px-6 py-16 text-center lg:px-16">
-          <h1 className="font-[family-name:var(--font-pinyon-script)] text-4xl text-[#c8a588] sm:text-5xl md:text-6xl">
+          <h1 className="page-title font-[family-name:var(--font-pinyon-script)] text-4xl text-[#c8a588] sm:text-5xl md:text-6xl">
             Contact Us
           </h1>
 
-          <div className="mt-10 space-y-10 text-sm leading-7 text-[#d9c2ad] sm:text-base">
+          <div className="page-content mt-10 space-y-10 text-sm leading-7 text-[#d9c2ad] sm:text-base">
             <div>
               <h2 className="text-base uppercase tracking-[0.2em] text-[#c8a588] sm:text-lg">
                 The Bride&apos;s Information
@@ -36,7 +36,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <div className="relative min-h-[360px] w-full lg:min-h-screen">
+        <div className="page-image relative min-h-[360px] w-full lg:min-h-screen">
           <Image
             src="/imgs/contact.JPG"
             alt="Stewart and Monique walking together"

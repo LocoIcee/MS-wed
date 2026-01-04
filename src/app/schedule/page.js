@@ -10,7 +10,7 @@ export default function SchedulePage() {
       }}
     >
       <div className="mx-auto grid min-h-screen w-full max-w-6xl grid-cols-1 items-stretch gap-10 px-6 py-16 lg:max-w-none lg:grid-cols-2 lg:gap-0 lg:px-0 lg:py-0">
-        <section className="relative flex min-h-[520px] flex-col justify-center overflow-hidden lg:min-h-screen">
+        <section className="page-image relative flex min-h-[520px] flex-col justify-center overflow-hidden lg:min-h-screen">
           <Image
             src="/imgs/schedule.jpeg"
             alt="Reception setting"
@@ -20,10 +20,10 @@ export default function SchedulePage() {
           />
           <div className="absolute inset-0 bg-[#4b4334]/70" aria-hidden="true" />
           <div className="relative z-10 px-10 py-12 lg:px-16">
-            <h1 className="text-xl uppercase tracking-[0.28em] text-[#e6d8cf] sm:text-2xl">
+            <h1 className="page-title text-xl uppercase tracking-[0.28em] text-[#e6d8cf] sm:text-2xl">
               Schedule of Events
             </h1>
-            <div className="mt-10 space-y-8 text-sm text-[#e6d8cf] sm:text-base">
+            <div className="page-content mt-10 space-y-8 text-sm text-[#e6d8cf] sm:text-base">
               {[
                 ["5:00 PM", "Welcome Cocktails"],
                 ["6:00 PM", "Dinner & Yapping"],
@@ -43,8 +43,8 @@ export default function SchedulePage() {
           </div>
         </section>
 
-        <section className="flex flex-col justify-center gap-8 px-6 py-16 text-[#e6d8cf] lg:px-16 lg:py-0">
-          <h2 className="text-2xl uppercase tracking-[0.3em] lg:text-3xl">
+        <section className="page-content flex flex-col justify-center gap-8 px-6 py-16 text-[#e6d8cf] lg:px-16 lg:py-0">
+          <h2 className="page-subtitle text-2xl uppercase tracking-[0.3em] lg:text-3xl">
             Reception
           </h2>
 

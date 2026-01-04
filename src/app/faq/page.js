@@ -10,9 +10,9 @@ export default function FaqPage() {
       }}
     >
       <div className="mx-auto grid min-h-screen w-full max-w-6xl grid-cols-1 items-center gap-10 px-6 py-16 lg:grid-cols-2 lg:gap-16">
-        <section className="space-y-8">
+        <section className="page-content space-y-8">
           <div>
-            <h1 className="text-4xl uppercase tracking-[0.35em]">
+            <h1 className="page-title text-4xl uppercase tracking-[0.35em]">
               FAQ
             </h1>
           </div>
@@ -56,7 +56,7 @@ export default function FaqPage() {
           </div>
         </section>
 
-        <div className="flex justify-center lg:justify-end">
+        <div className="page-image flex justify-center lg:justify-end">
           <Image
             src="/imgs/faq.JPG"
             alt="Stewart and Monique on the train"

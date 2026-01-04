@@ -1,6 +1,7 @@
 import { Pinyon_Script, Quattrocento, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import SiteNav from "../components/site-nav";
+import PageTransition from "../components/page-transition";
 
 const quattrocento = Quattrocento({
   variable: "--font-quattrocento",
@@ -31,10 +32,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${quattrocento.variable} ${pinyonScript.variable} ${robotoMono.variable} antialiased`}
       >
-        {children}
+        <PageTransition>{children}</PageTransition>
         <SiteNav />
       </body>
     </html>
   );
 }
-

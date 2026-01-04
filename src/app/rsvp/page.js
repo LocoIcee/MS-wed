@@ -44,17 +44,17 @@ export default function RsvpPage() {
       </div>
 
       <div className="relative flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center">
-        <p className="font-[family-name:var(--font-pinyon-script)] text-4xl text-[#f1e9d8] drop-shadow-[0_8px_18px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-6xl">
+        <p className="page-title font-[family-name:var(--font-pinyon-script)] text-4xl text-[#f1e9d8] drop-shadow-[0_8px_18px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-6xl">
           Be Our Guest
         </p>
-        <h1 className="mt-4 text-2xl uppercase tracking-[0.35em] text-[#efe6d4] drop-shadow-[0_6px_14px_rgba(0,0,0,0.45)] sm:text-3xl lg:text-4xl">
+        <h1 className="page-subtitle mt-4 text-2xl uppercase tracking-[0.35em] text-[#efe6d4] drop-shadow-[0_6px_14px_rgba(0,0,0,0.45)] sm:text-3xl lg:text-4xl">
           July 23, 2026, 5:00pm
         </h1>
-        <p className="mt-4 font-[family-name:var(--font-pinyon-script)] text-2xl text-[#efe6d4]/90 sm:text-3xl lg:text-4xl">
+        <p className="page-lede mt-4 font-[family-name:var(--font-pinyon-script)] text-2xl text-[#efe6d4]/90 sm:text-3xl lg:text-4xl">
           Let us know if you can make it
         </p>
 
-        <form className="mt-10 w-full max-w-md">
+        <form className="page-content mt-10 w-full max-w-md">
           <label className="sr-only" htmlFor="rsvp-email">
             Email address
           </label>
