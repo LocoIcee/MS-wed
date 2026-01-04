@@ -1,6 +1,12 @@
 export default function SchedulePage() {
   return (
-    <div className="min-h-screen w-full bg-[#4b4334] text-[#e6d8cf]">
+    <div
+      className="min-h-screen w-full bg-[#4b4334] text-[#e6d8cf]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 15% 20%, rgba(255,255,255,0.06), transparent 55%), radial-gradient(circle at 85% 85%, rgba(0,0,0,0.35), transparent 60%)",
+      }}
+    >
       <div className="mx-auto grid min-h-screen w-full max-w-6xl grid-cols-1 items-stretch gap-10 px-6 py-16 lg:max-w-none lg:grid-cols-2 lg:gap-0 lg:px-0 lg:py-0">
         <section className="relative flex min-h-[520px] flex-col justify-center overflow-hidden lg:min-h-screen">
           <img
@@ -54,7 +60,7 @@ export default function SchedulePage() {
               summer evening celebration.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              {["#380203", "#955859", "#848261", "#352b1f", "#97795e", "#3d2500"].map(
+              {["#380203", "#955859", "#848261", "#132207", "#97795e", "#3d2500", "#060029"].map(
                 (color) => (
                   <span
                     className="h-12 w-12 rounded-full"

@@ -1,6 +1,12 @@
 export default function StoryPage() {
   return (
-    <div className="min-h-screen w-full bg-[#270a0a] text-[#e6d8cf]">
+    <div
+      className="min-h-screen w-full bg-[#270a0a] text-[#e6d8cf]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 15% 20%, rgba(255,255,255,0.06), transparent 55%), radial-gradient(circle at 85% 85%, rgba(0,0,0,0.35), transparent 60%)",
+      }}
+    >
       <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center gap-10 px-6 py-16">
         <div className="flex w-full items-center justify-center">
           <div className="grid w-full grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto_1fr]">
@@ -11,7 +17,7 @@ export default function StoryPage() {
               <img
                 src="/imgs/story.JPG"
                 alt="Stewart and Monique"
-                className="w-64 max-w-full shadow-[0_24px_60px_rgba(0,0,0,0.35)] lg:w-148"
+                className="w-64 max-w-full shadow-[0_24px_60px_rgba(0,0,0,0.35)] lg:w-100"
               />
             </div>
             <div className="text-center text-4xl uppercase tracking-[0.35em] text-[#e6d8cf] lg:block font-[family-name:var(--font-quattrocento)]">
@@ -34,4 +40,3 @@ export default function StoryPage() {
     </div>
   );
 }
-
