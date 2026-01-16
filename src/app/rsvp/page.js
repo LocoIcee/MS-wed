@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const leafStroke = "#6f6a4a";
 
 const cornerLeaf = (
@@ -26,6 +30,79 @@ const cornerLeaf = (
 );
 
 export default function RsvpPage() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [lookupState, setLookupState] = useState("idle");
+  const [responseState, setResponseState] = useState("idle");
+  const [feedback, setFeedback] = useState("");
+
+  const handleLookup = async (event) => {
+    event.preventDefault();
+    setFeedback("");
+    setLookupState("loading");
+    setResponseState("idle");
+
+    try {
+      const res = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "lookup",
+          firstName,
+          lastName,
+        }),
+      });
+
+      if (!res.ok) {
+        setLookupState("not-found");
+        setFeedback("Name not found. Please check the spelling.");
+        return;
+      }
+
+      setLookupState("found");
+    } catch (error) {
+      setLookupState("error");
+      setFeedback("Something went wrong. Please try again.");
+    }
+  };
+
+  const handleRespond = async (attending) => {
+    setResponseState("loading");
+    setFeedback("");
+
+    try {
+      const res = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "respond",
+          firstName,
+          lastName,
+          attending,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data?.saved) {
+        setResponseState("error");
+        setFeedback("We couldn't save your response. Please try again.");
+        return;
+      }
+
+      setResponseState("saved");
+      if (data.emailSent === false) {
+        setFeedback(
+          "RSVP saved, but email notification could not be sent yet."
+        );
+      } else {
+        setFeedback("RSVP saved. Thank you!");
+      }
+    } catch (error) {
+      setResponseState("error");
+      setFeedback("We couldn't save your response. Please try again.");
+    }
+  };
+
   return (
     <div
       className="relative min-h-screen w-full overflow-hidden bg-[#373328] text-[#f1e9d8]"
@@ -54,18 +131,73 @@ export default function RsvpPage() {
           Let us know if you can make it
         </p>
 
-        <form className="page-content mt-10 w-full max-w-md">
-          <label className="sr-only" htmlFor="rsvp-email">
-            Email address
-          </label>
-          <input
-            id="rsvp-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="Email address"
-            className="w-full border border-[#f1e9d8]/40 bg-transparent px-5 py-3 text-center text-sm uppercase tracking-[0.35em] text-[#f1e9d8] placeholder:text-[#f1e9d8]/45 focus:border-[#f1e9d8]/70 focus:outline-none"
-          />
+        <form className="page-content mt-10 w-full max-w-xl space-y-6" onSubmit={handleLookup}>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="flex flex-col gap-3 text-xs uppercase tracking-[0.3em] text-[#f1e9d8]/80">
+              First name
+              <input
+                name="firstName"
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                autoComplete="given-name"
+                className="w-full border border-[#f1e9d8]/40 bg-transparent px-4 py-3 text-center text-sm uppercase tracking-[0.35em] text-[#f1e9d8] placeholder:text-[#f1e9d8]/45 focus:border-[#f1e9d8]/70 focus:outline-none"
+                placeholder="First name"
+                required
+              />
+            </label>
+            <label className="flex flex-col gap-3 text-xs uppercase tracking-[0.3em] text-[#f1e9d8]/80">
+              Last name
+              <input
+                name="lastName"
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
+                autoComplete="family-name"
+                className="w-full border border-[#f1e9d8]/40 bg-transparent px-4 py-3 text-center text-sm uppercase tracking-[0.35em] text-[#f1e9d8] placeholder:text-[#f1e9d8]/45 focus:border-[#f1e9d8]/70 focus:outline-none"
+                placeholder="Last name"
+                required
+              />
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full border border-[#f1e9d8]/60 px-6 py-3 text-xs uppercase tracking-[0.45em] text-[#f1e9d8] transition hover:border-[#f1e9d8]"
+            disabled={lookupState === "loading"}
+          >
+            {lookupState === "loading" ? "Checking..." : "Find my name"}
+          </button>
+
+          {lookupState === "found" && (
+            <div className="space-y-4 text-sm uppercase tracking-[0.25em] text-[#f1e9d8]/80">
+              <p className="text-center text-xs sm:text-sm">
+                We found your name. Please choose your response.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  className="border border-[#f1e9d8]/60 px-6 py-3 text-xs uppercase tracking-[0.4em] text-[#f1e9d8] transition hover:border-[#f1e9d8]"
+                  onClick={() => handleRespond(true)}
+                  disabled={responseState === "loading"}
+                >
+                  Attending
+                </button>
+                <button
+                  type="button"
+                  className="border border-[#f1e9d8]/60 px-6 py-3 text-xs uppercase tracking-[0.4em] text-[#f1e9d8] transition hover:border-[#f1e9d8]"
+                  onClick={() => handleRespond(false)}
+                  disabled={responseState === "loading"}
+                >
+                  Unable to attend
+                </button>
+              </div>
+            </div>
+          )}
+
+          {feedback && (
+            <p className="text-center text-xs uppercase tracking-[0.25em] text-[#f1e9d8]/70">
+              {feedback}
+            </p>
+          )}
         </form>
       </div>
     </div>
