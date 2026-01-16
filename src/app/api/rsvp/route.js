@@ -1,23 +1,14 @@
-import { promises as fs } from "fs";
-import path from "path";
+import { createClient } from "@supabase/supabase-js";
 
-const dataDir = path.join(process.cwd(), "data");
-const guestsFile = path.join(dataDir, "guests.json");
-const rsvpsFile = path.join(dataDir, "rsvps.json");
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+const supabase =
+  supabaseUrl && supabaseServiceRoleKey
+    ? createClient(supabaseUrl, supabaseServiceRoleKey)
+    : null;
 
 const normalizeName = (value) => value.trim().toLowerCase();
-
-const readJson = async (filePath, fallback) => {
-  try {
-    const content = await fs.readFile(filePath, "utf8");
-    return JSON.parse(content);
-  } catch (error) {
-    if (error.code === "ENOENT") {
-      return fallback;
-    }
-    throw error;
-  }
-};
 
 const sendResendEmail = async ({ guest, attending }) => {
   const apiKey = process.env.RESEND_API_KEY;
@@ -60,12 +51,23 @@ export async function POST(request) {
     return Response.json({ error: "Missing name fields." }, { status: 400 });
   }
 
-  const guests = await readJson(guestsFile, []);
-  const guest = guests.find(
-    (entry) =>
-      normalizeName(entry.firstName) === normalizeName(firstName) &&
-      normalizeName(entry.lastName) === normalizeName(lastName)
-  );
+  if (!supabase) {
+    return Response.json(
+      { error: "Supabase is not configured." },
+      { status: 500 }
+    );
+  }
+
+  const { data: guest, error: guestError } = await supabase
+    .from("guests")
+    .select("id, first_name, last_name")
+    .eq("first_name_lower", normalizeName(firstName))
+    .eq("last_name_lower", normalizeName(lastName))
+    .maybeSingle();
+
+  if (guestError) {
+    return Response.json({ error: "Guest lookup failed." }, { status: 500 });
+  }
 
   if (!guest) {
     return Response.json({ found: false }, { status: 404 });
@@ -77,27 +79,27 @@ export async function POST(request) {
 
   if (payload.action === "respond") {
     const attending = Boolean(payload.attending);
-    const nextEntry = {
-      firstName: guest.firstName,
-      lastName: guest.lastName,
-      attending,
-      respondedAt: new Date().toISOString(),
-    };
+    const now = new Date().toISOString();
 
-    await fs.mkdir(dataDir, { recursive: true });
-    const existing = await readJson(rsvpsFile, []);
-    const filtered = existing.filter(
-      (entry) =>
-        !(
-          normalizeName(entry.firstName) === normalizeName(guest.firstName) &&
-          normalizeName(entry.lastName) === normalizeName(guest.lastName)
-        )
+    const { error: rsvpError } = await supabase.from("rsvps").upsert(
+      {
+        guest_id: guest.id,
+        attending,
+        responded_at: now,
+        updated_at: now,
+      },
+      { onConflict: "guest_id" }
     );
-    filtered.push(nextEntry);
-    await fs.writeFile(rsvpsFile, JSON.stringify(filtered, null, 2));
+
+    if (rsvpError) {
+      return Response.json({ error: "RSVP save failed." }, { status: 500 });
+    }
 
     const emailResult = await sendResendEmail({
-      guest: nextEntry,
+      guest: {
+        firstName: guest.first_name,
+        lastName: guest.last_name,
+      },
       attending,
     });
 
