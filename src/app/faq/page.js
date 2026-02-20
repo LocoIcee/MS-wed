@@ -20,6 +20,18 @@ export default function FaqPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-base font-semibold text-[#e6d8cf] lg:text-lg">
+                Whats the venue address?
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 lg:text-base">
+                L’Olivo Cicchetti & Lounge
+                1023 9 Ave SE
+                Calgary, AB T2G 0S7
+              </p>
+              <div className="mt-6 h-px w-full bg-[#e6d8cf]/35" />
+            </div>
+
+            <div>
+              <h2 className="text-base font-semibold text-[#e6d8cf] lg:text-lg">
                 Can I bring a +1 or kids?
               </h2>
               <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 lg:text-base">
@@ -47,7 +59,7 @@ export default function FaqPage() {
                 Will there be a formal ceremony?
               </h2>
               <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 lg:text-base">
-                Our celebration will focus on being fully present together—sharing
+                Our celebration will focus on being fully present together sharing
                 great food, drinks, and time with the people we love as we gather
                 for a reception-only evening.
               </p>
