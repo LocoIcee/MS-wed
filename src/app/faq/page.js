@@ -23,7 +23,7 @@ export default function FaqPage() {
                 Whats the venue address?
               </h2>
               <p className="mt-3 text-sm leading-7 text-[#e6d8cf]/90 lg:text-base">
-                L’Olivo Cicchetti & Lounge
+                L&rsquo;Olivo Cicchetti & Lounge
                 1023 9 Ave SE
                 Calgary, AB T2G 0S7
               </p>
